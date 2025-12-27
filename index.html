@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Roster Manager - The Ultimate WoW Guild Tool</title>
+    <meta name="description" content="Manage your World of Warcraft guild with ease. Sync alts, track bans, audit rosters, and log changes with GRM.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/site.css">
+
+    <!-- Tailwind -->
+    <script src="scripts/theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- UI Script -->
+    <script src="scripts/ui.js" defer></script>
+</head>
+<body class="bg-wow-lightBg text-gray-600 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- LIGHTBOX MODAL (Hidden by default) -->
+    <div id="image-modal" class="hidden fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm items-center justify-center p-4 transition-opacity">
+        <img id="modal-content" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-2 border-wow-gold object-contain" src="assets/grm-logo.jpg" alt="Full size preview">
+        <div class="absolute top-4 right-4 text-white text-sm">Press ESC to close</div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="#" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img class="h-10 w-10 rounded-full border border-wow-darkGold group-hover:border-blue-600 transition-colors" src="assets/grm-logo.jpg" alt="GRM Logo">
+                    <span class="font-serif font-bold text-xl text-gray-900 tracking-wide group-hover:text-blue-800 transition-colors">Guild Roster Manager</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <!-- HOME (Active) -->
+                        <a href="#" class="bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-sm font-bold" aria-current="page">Home</a>
+
+                        <!-- Anchors -->
+                        <a href="#features" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="#modules" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Modules</a>
+
+                        <!-- External/Other Pages -->
+                        <a href="faq.html" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
+                        <a href="https://thegeneticsguy.github.io/GRM_Changelog/" target="_blank" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Changelog</a>
+
+                        <a href="https://extract.guildrostermanager.com" class="ml-4 bg-blue-900 hover:bg-blue-800 text-blue-100 border border-blue-700 px-4 py-2 rounded-md text-sm font-bold transition-all shadow-lg hover:shadow-blue-900/50">
+                            Log Extractor tool
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hamburger Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b border-gray-200" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="bg-blue-50 text-blue-700 block px-3 py-2 rounded-md text-base font-bold" aria-current="page">Home</a>
+                <a href="#features" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Features</a>
+                <a href="#modules" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Modules</a>
+                <a href="faq.html" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="https://thegeneticsguy.github.io/GRM_Changelog/" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Changelog</a>
+                <a href="https://extract.guildrostermanager.com" class="text-blue-700 font-bold block px-3 py-2 rounded-md text-base">Log Extractor Tool</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        <!-- HERO -->
+        <header class="relative overflow-hidden bg-wow-lightBg">
+            <div class="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold text-gray-900 tracking-tight mb-6">
+                    Enhanced Control for <br>
+                    <span class="text-blue-800">Guild Leadership</span>
+                </h1>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600">
+                    Detailed Guild Event Logging, Alt/Main Managemnt, Member Bans, Additional Room for Member Notes, Mass Rank Management and Kick Tools, Inactivity Tracking, and much more.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://www.curseforge.com/wow/addons/guild-roster-manager" target="_blank"
+                       class="px-8 py-4 bg-red-900 border border-red-800 hover:bg-red-800 text-white rounded-lg font-bold text-lg shadow-xl transition-all flex items-center justify-center gap-2">
+                       <span>Download on CurseForge</span>
+                    </a>
+                    <a href="https://extract.guildrostermanager.com"
+                       class="px-8 py-4 bg-white border border-gray-300 hover:border-blue-700 text-blue-900 hover:text-blue-700 rounded-lg font-bold text-lg shadow-md hover:shadow-lg transition-all">
+                       Open Log Extractor
+                    </a>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50 via-transparent to-transparent opacity-70"></div>
+        </header>
+
+        <!-- FEATURES GRID -->
+        <section id="features" class="py-20 bg-white border-y border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-serif font-bold text-gray-900">Why Use GRM?</h2>
+                    <p class="mt-4 text-gray-500">Designed by a Guild Leader, for Guild Leaders.</p>
+                </div>
+
+                <!-- Grid: 1 col mobile, 2 col tablet, 4 col desktop -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- CARD 1: Logging -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Better Guild Logging</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Track joins, leaves, kicks, promotions, demotions, level ups, inactivity, note changes, birthdays, member anniversaries, and even name changes. Know exactly who did what and when.
+                            </p>
+                        </div>
+                        <!-- Image Container -->
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/grm-guild-event-log.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Logging Screenshot">
+                                <div class="absolute inset-0 bg-black/10 hover:bg-transparent pointer-events-none"></div>
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: Alt Management -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Alt/Main Management</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Identify alts and group them into an alt group with the ability to set 1 toon of the alt group as "Main." Mouseover any player in the roster to see their Main, their rank history, and all grouped alts.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/Alts.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Alts Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: Ban List -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Ban List System</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Prevents banned players from sneaking back in. GRM alerts you if a banned player rejoins. Detects name-changes using GUID tracking (Permanent ID) to catch banned players even if they change their name.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/Ban.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Ban List Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4: Data Syncing -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Secure Data Syncing</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Decentralized database syncing keeps officers on the same page. Syncs Mains, Alts, Bans, Join Date, Rank Promotion Dates, and Custom Notes. Includes granular trust restrictions so only authorized ranks can sync critical data.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/sync-data.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Sync Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 5: Macro Tool -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Macro Tool</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                A critical tool for large guilds. Quickly build macros to mass-kick inactive players based on your filters, or manage mass demotions and promotions efficiently.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/macro-tool.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Macro Tool Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 6: Custom Roster -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Custom Roster</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                A superior roster interface. Group members by their Main/Alt status and search public, officer, or custom notes instantly to find exactly who you are looking for.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/custom-roster.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Roster Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 7: History Tracking -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Membership History</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                GRM stores the complete history of a player, including original join dates, leave dates, and rejoin dates. Tracks the date of <em>every</em> promotion (or demotion) they have ever received, not just the last one.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/history.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="History Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 8: Classic Support -->
+                    <div class="bg-wow-lightBg p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between h-full group">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-3 border-b border-gray-200 pb-2">Classic & Hardcore</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Full support for Retail and all Classic versions (Expansion, Vanilla, and Anniversary). Hardcore mode support tracks perma-deaths and logs the exact time and date of the fallen.
+                            </p>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="overflow-hidden rounded-md border border-gray-300 cursor-pointer relative h-32">
+                                <img src="assets/hc-death.webp" class="lightbox-trigger w-full h-full object-cover hover:scale-105 transition-transform" alt="Hardcore Screenshot">
+                            </div>
+                            <p class="text-xs text-center text-gray-400 mt-2 italic">Click to expand</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULES SPOTLIGHT -->
+        <section id="modules" class="py-20 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 border border-gray-700 relative overflow-hidden shadow-2xl">
+                    <div class="relative z-10 md:w-2/3">
+                        <span class="text-blue-400 font-bold tracking-wider text-sm uppercase">Official Module</span>
+                        <h2 class="text-3xl font-serif font-bold text-white mt-2 mb-4">GRM Group Info</h2>
+                        <p class="text-gray-300 text-lg mb-6">
+                            Enhance your LFG experience. This module informs you if you are grouped with former guildies, highlights current guildies you maybe have joined with and didn't realize it, and syncs known alt data to your party frames.
+                        </p>
+                        <a href="https://www.curseforge.com/wow/addons/guild-roster-manager-group-info" target="_blank" class="inline-flex items-center text-wow-gold hover:text-white font-bold transition-colors">
+                            View on CurseForge &rarr;
+                        </a>
+                    </div>
+                    <div class="absolute -right-10 -bottom-20 w-64 h-64 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOAD LINKS -->
+        <section id="download" class="py-16 bg-white border-t border-gray-200 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-2xl font-serif font-bold text-gray-900 mb-8">Available on all major platforms</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.curseforge.com/wow/addons/guild-roster-manager" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded text-gray-200 transition-colors shadow-md">
+                        CurseForge
+                    </a>
+                    <a href="https://addons.wago.io/addons/guild-roster-manager" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded text-gray-200 transition-colors shadow-md">
+                        Wago.io
+                    </a>
+                    <a href="https://github.com/TheGeneticsGuy/Guild_Roster_Manager" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded text-gray-200 transition-colors shadow-md">
+                        GitHub
+                    </a>
+                </div>
+                <p class="mt-8 text-sm text-gray-500 font-medium">
+                    Several Million Downloads
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-serif font-bold text-xl text-white">GRM</span>
+                <p class="text-xs text-white mt-2">
+                    &copy; <span id="copyright-year">2026</span> Guild Roster Manager.<br>
+                    Not affiliated with Blizzard Entertainment. This is an independent project.
+                </p>
+
+                <p class="pt-2 border-t border-white text-red-600">
+                    Logo by <a href="https://www.darkwolves.eu" target="_blank" rel="noopener" class="text-white hover:text-indigo-400 transition-colors hover:underline">Poisonenvy of the Dark Wolves guild (EU)</a>
+                </p>
+
+            </div>
+            <div class="flex gap-6">
+                <a href="https://discord.gg/wA7bPUfZuK" class="text-white hover:text-indigo-400 transition-colors flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037 13.045 13.045 0 0 0-1.093 2.222 18.368 18.368 0 0 0-5.32 0 13.045 13.045 0 0 0-1.093-2.222.074.074 0 0 0-.079-.037 19.791 19.791 0 0 0-4.885 1.515.071.071 0 0 0-.037.054c-.584 8.766 3.322 15.753 8.356 19.863a.072.072 0 0 0 .08 0 6.645 6.645 0 0 0 2.21-2.903.076.076 0 0 0-.028-.08 10.708 10.708 0 0 1-3.664-1.758.077.077 0 0 1 .003-.128 7.376 7.376 0 0 0 1.944-.94.075.075 0 0 1 .135.03c-.275.14-.548.273-.815.405a10.938 10.938 0 0 1 2.404-.736.077.077 0 0 1 .084.053 6.645 6.645 0 0 0 2.21 2.903.072.072 0 0 0 .08 0c5.06-4.133 8.94-11.097 8.356-19.863a.071.071 0 0 0-.037-.054zM8.02 15.33c-1.18 0-2.157-1.086-2.157-2.42 0-1.332.955-2.419 2.157-2.419 1.21 0 2.175 1.095 2.157 2.42 0 1.333-.955 2.42-2.157 2.42zm7.975 0c-1.182 0-2.156-1.086-2.156-2.42 0-1.332.955-2.419 2.156-2.419 1.21 0 2.176 1.095 2.156 2.42 0 1.333-.956 2.42-2.156 2.42z"/></svg>
+                    <span>Discord</span>
+                </a>
+                <a href="https://github.com/TheGeneticsGuy/Guild-Roster-Manager" class="text-white hover:text-white transition-colors flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

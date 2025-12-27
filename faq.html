@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Guild Roster Manager</title>
+    <meta name="description" content="Frequently Asked Questions about Guild Roster Manager (GRM) for World of Warcraft.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/site.css">
+
+    <!-- Tailwind -->
+    <script src="scripts/theme.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- UI Script -->
+    <script src="scripts/ui.js" defer></script>
+</head>
+<body class="bg-wow-lightBg text-gray-600 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Nav -->
+    <!-- Nav for FAQ.HTML -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img class="h-10 w-10 rounded-full border border-wow-darkGold group-hover:border-blue-600 transition-colors" src="assets/grm-logo.jpg" alt="GRM Logo">
+                    <span class="font-serif font-bold text-xl text-gray-900 tracking-wide group-hover:text-blue-800 transition-colors">Guild Roster Manager</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <!-- Home (Normal Link) -->
+                        <a href="index.html" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Home</a>
+
+                        <!-- Anchors (Point to Index page) -->
+                        <a href="index.html#features" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="index.html#modules" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Modules</a>
+
+                        <!-- FAQ (Active) -->
+                        <a href="#" class="bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-sm font-bold" aria-current="page">FAQ</a>
+
+                        <a href="https://thegeneticsguy.github.io/GRM_Changelog/" target="_blank" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Changelog</a>
+
+                        <a href="https://extract.guildrostermanager.com" class="ml-4 bg-blue-900 hover:bg-blue-800 text-blue-100 border border-blue-700 px-4 py-2 rounded-md text-sm font-bold transition-all shadow-lg hover:shadow-blue-900/50">
+                            Log Extractor tool
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hamburger Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b border-gray-200" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Features</a>
+                <a href="index.html#modules" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Modules</a>
+                <a href="#" class="bg-blue-50 text-blue-700 block px-3 py-2 rounded-md text-base font-bold" aria-current="page">FAQ</a>
+                <a href="https://thegeneticsguy.github.io/GRM_Changelog/" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Changelog</a>
+                <a href="https://extract.guildrostermanager.com" class="text-blue-700 font-bold block px-3 py-2 rounded-md text-base">Log Extractor Tool</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12 md:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-16">
+                <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
+                <p class="text-lg text-gray-600">Common questions about syncing, data management, and troubleshooting.</p>
+            </div>
+
+            <div class="space-y-4">
+
+                <!-- CATEGORY: GETTING STARTED -->
+                <div class="pb-2 border-b border-gray-200 mb-6">
+                    <h2 class="text-sm font-bold text-blue-700 uppercase tracking-wider">Troubleshooting & Syncing</h2>
+                </div>
+
+                <!-- Q1 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">HELP! I just joined a guild and GRM will not sync!</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-4">This is a known anomaly. When you first join a guild, the "Addon-to-Addon" communications that transmit over the GUILD channel are not activated until you <strong>fully exit the game and log back in</strong>.</p>
+                        <p>Simply logging to the character select screen or reloading UI (/reload) is not enough. You must fully restart the WoW client. This issue, which appears to have started around Patch 11.0, prevents GRM from determining who fellow addon users are until a client restart occurs.</p>
+                    </div>
+                </div>
+
+                <!-- Q5 (Moved up for troubleshooting relevance) -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">Why is "00100" appearing in all player notes?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-4">GRM often gets the blame, but this is caused by certain DKP addons (notably <strong>Bohemian DKP</strong>) automatically placing `0100` in player notes. Since GRM syncs note changes, it propagates this change.</p>
+                        <p class="mb-4">If you need to fix this, and you have a local backup or restore point within GRM, you can use the following script to restore notes. <strong class="text-red-600">Use cautiously as it overwrites all public notes guild-wide:</strong></p>
+                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-sm overflow-x-auto">
+                            /run GRM_API.RestorAllPublicNotesFromSave()
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">How do I fix AddOnSkins issues?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-4">The addon author does not regularly update the skin file for GRM. You can manually install the latest working file here: <a href="https://github.com/TheGeneticsGuy/Guild_Roster_Manager_AddonSkinsFile" target="_blank" class="text-blue-600 hover:underline">GitHub: GRM AddOnSkins File</a>.</p>
+                        <p class="mb-2">Download the <code>Guild_Roster_Manager.lua</code> file and copy it to:</p>
+                        <code class="block bg-gray-200 text-gray-800 p-2 rounded mb-4 text-xs">\Interface\AddOns\AddOnSkins\Skins\AddOns\</code>
+                        <p class="mb-2">If AddOnSkins has blacklisted GRM due to errors, run this script and then re-enable GRM:</p>
+                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-sm overflow-x-auto">
+                            /run AddOnSkinsDS={};ReloadUI()
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY: DATA -->
+                <div class="pb-2 border-b border-gray-200 mb-6 mt-10">
+                    <h2 class="text-sm font-bold text-blue-700 uppercase tracking-wider">Data & Backups</h2>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">How do I find Join Dates from before I installed GRM?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-4">The server does not provide this information directly, but there are a few workarounds:</p>
+
+                        <h4 class="font-bold text-gray-800 mb-2">1. Check WoWProgress</h4>
+                        <p class="mb-4 text-sm">If your guild is tracked on <a href="https://www.wowprogress.com" target="_blank" class="text-blue-600 hover:underline">wowprogress.com</a>, you can often find rough join dates there.</p>
+
+                        <h4 class="font-bold text-gray-800 mb-2">2. Use the In-Game Command (Retail Only)</h4>
+                        <p class="mb-2 text-sm">If players joined after the 2018 (BFA 8.0) Communities update, the server has their join date logged. Players can run this macro themselves and report the date to you:</p>
+                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-xs overflow-x-auto mb-4">
+                            /run local t=date("*t",math.floor((tonumber(string.format("%.0f",C_Club.GetClubInfo(C_Club.GetGuildClubId()).joinTime))/1000000)+0.5));print("Date Joined: "..t.year.."-"..t.month.."-"..t.day);
+                        </div>
+
+                        <h4 class="font-bold text-gray-800 mb-2">3. Mass Set Join Date (Last Resort)</h4>
+                        <p class="mb-2 text-sm">If you simply want to fill the blanks with a placeholder date (e.g., Aug 25, 2023) for everyone missing a date:</p>
+                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-xs overflow-x-auto">
+                            /run GRM_API.SetAllUnknownJoinDates(25,8,2023)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">How do I create a real backup of my GRM data?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-2">Your data is stored in your WoW Directory here:</p>
+                        <code class="block bg-gray-200 text-gray-800 p-2 rounded mb-4 text-xs">_retail_\WTF\Account\YOUR_ACCOUNT\SavedVariables\Guild_Roster_Manager.lua</code>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>To Backup:</strong> Log out of the game, copy that `.lua` file, and paste it somewhere safe.</li>
+                            <li><strong>To Restore:</strong> Log out, delete the current file in that folder, and paste your backup copy in its place.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CATEGORY: FEATURES -->
+                <div class="pb-2 border-b border-gray-200 mb-6 mt-10">
+                    <h2 class="text-sm font-bold text-blue-700 uppercase tracking-wider">Features & Limitations</h2>
+                </div>
+
+                <!-- Q6 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">Why does my Log differ from other officers?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-4">GRM Logs are <strong>personal to you</strong> and are not synced. They are generated based on your own configuration settings and what you witnessed while online.</p>
+                        <p>If you play at different times than other officers, your logs will differ. The log is only current from the day you installed the addon.</p>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">Can GRM tell me who edited notes?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-2"><strong>Custom GRM Notes:</strong> Yes. GRM logs who created or edited these notes.</p>
+                        <p><strong>Public/Officer Notes:</strong> No. Blizzard does not provide API access to see who modified standard in-game notes.</p>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">Does GRM work on Private Servers?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p>No. GRM relies on the modern Retail and Classic APIs. It will not function on private servers running older, modified API builds.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-serif font-bold text-xl text-white">GRM</span>
+                <p class="text-xs text-white mt-2">
+                    &copy; <span id="copyright-year">2026</span> Guild Roster Manager.<br>
+                    Not affiliated with Blizzard Entertainment. This is an independent project.
+                </p>
+
+                <p class="pt-2 border-t border-white text-red-600">
+                    Logo by <a href="https://www.darkwolves.eu" target="_blank" rel="noopener" class="text-white hover:text-indigo-400 transition-colors hover:underline">Poisonenvy of the Dark Wolves guild (EU)</a>
+                </p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://discord.gg/wA7bPUfZuK" class="text-white hover:text-indigo-400 transition-colors flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037 13.045 13.045 0 0 0-1.093 2.222 18.368 18.368 0 0 0-5.32 0 13.045 13.045 0 0 0-1.093-2.222.074.074 0 0 0-.079-.037 19.791 19.791 0 0 0-4.885 1.515.071.071 0 0 0-.037.054c-.584 8.766 3.322 15.753 8.356 19.863a.072.072 0 0 0 .08 0 6.645 6.645 0 0 0 2.21-2.903.076.076 0 0 0-.028-.08 10.708 10.708 0 0 1-3.664-1.758.077.077 0 0 1 .003-.128 7.376 7.376 0 0 0 1.944-.94.075.075 0 0 1 .135.03c-.275.14-.548.273-.815.405a10.938 10.938 0 0 1 2.404-.736.077.077 0 0 1 .084.053 6.645 6.645 0 0 0 2.21 2.903.072.072 0 0 0 .08 0c5.06-4.133 8.94-11.097 8.356-19.863a.071.071 0 0 0-.037-.054zM8.02 15.33c-1.18 0-2.157-1.086-2.157-2.42 0-1.332.955-2.419 2.157-2.419 1.21 0 2.175 1.095 2.157 2.42 0 1.333-.955 2.42-2.157 2.42zm7.975 0c-1.182 0-2.156-1.086-2.156-2.42 0-1.332.955-2.419 2.156-2.419 1.21 0 2.176 1.095 2.156 2.42 0 1.333-.956 2.42-2.156 2.42z"/></svg>
+                    <span>Discord</span>
+                </a>
+                <a href="https://github.com/TheGeneticsGuy/Guild-Roster-Manager" class="text-white hover:text-white transition-colors flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
