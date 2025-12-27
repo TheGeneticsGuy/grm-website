@@ -1,0 +1,25 @@
+{
+  "name": "grm-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./styles/input.css -o ./styles/site.css --watch",
+    "build": "tailwindcss -i ./styles/input.css -o ./styles/site.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheGeneticsGuy/grm-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheGeneticsGuy/grm-website/issues"
+  },
+  "homepage": "https://github.com/TheGeneticsGuy/grm-website#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
