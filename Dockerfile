@@ -14,6 +14,10 @@ RUN npx tailwindcss -i ./styles/input.css -o ./styles/site.css --minify
 # Serve the Site
 FROM nginx:alpine
 
+# Removing the default so I can copy in my custom config
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 COPY index.html /usr/share/nginx/html/index.html
 COPY faq.html /usr/share/nginx/html/faq.html
 COPY changelog.html /usr/share/nginx/html/changelog.html
