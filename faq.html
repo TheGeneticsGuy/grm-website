@@ -30,7 +30,7 @@
 
                 <!-- Logo -->
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
-                    <img class="h-10 w-10 rounded-full border border-wow-darkGold group-hover:border-blue-600 transition-colors" src="assets/grm-logo.jpg" alt="GRM Logo">
+                    <img class="h-12 w-12 rounded-full border border-wow-darkGold group-hover:border-blue-600 transition-colors" src="assets/grm-logo.jpg" alt="GRM Logo">
                     <span class="font-serif font-bold text-xl text-gray-900 tracking-wide group-hover:text-blue-800 transition-colors">Guild Roster Manager</span>
                 </a>
 
@@ -47,7 +47,7 @@
                         <!-- FAQ (Active) -->
                         <a href="#" class="bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-sm font-bold" aria-current="page">FAQ</a>
 
-                        <a href="https://thegeneticsguy.github.io/GRM_Changelog/" target="_blank" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Changelog</a>
+                        <a href="changelog.html" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Changelog</a>
 
                         <a href="https://extract.guildrostermanager.com" class="ml-4 bg-blue-900 hover:bg-blue-800 text-blue-100 border border-blue-700 px-4 py-2 rounded-md text-sm font-bold transition-all shadow-lg hover:shadow-blue-900/50">
                             Log Extractor tool
@@ -71,7 +71,7 @@
                 <a href="index.html#features" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Features</a>
                 <a href="index.html#modules" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Modules</a>
                 <a href="#" class="bg-blue-50 text-blue-700 block px-3 py-2 rounded-md text-base font-bold" aria-current="page">FAQ</a>
-                <a href="https://thegeneticsguy.github.io/GRM_Changelog/" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Changelog</a>
+                <a href="changelog.html" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Changelog</a>
                 <a href="https://extract.guildrostermanager.com" class="text-blue-700 font-bold block px-3 py-2 rounded-md text-base">Log Extractor Tool</a>
             </div>
         </div>
@@ -83,7 +83,7 @@
 
             <div class="text-center mb-16">
                 <h1 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
-                <p class="text-lg text-gray-600">Common questions about syncing, data management, and troubleshooting.</p>
+                <p class="text-lg text-gray-600">Common questions about syncing, data management, and various GRM troubleshooting.</p>
             </div>
 
             <div class="space-y-4">
@@ -127,60 +127,13 @@
                         <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
-                        <p class="mb-4">The addon author does not regularly update the skin file for GRM. You can manually install the latest working file here: <a href="https://github.com/TheGeneticsGuy/Guild_Roster_Manager_AddonSkinsFile" target="_blank" class="text-blue-600 hover:underline">GitHub: GRM AddOnSkins File</a>.</p>
+                        <p class="mb-4">The AddOnSkins autho does not regularly update the skin file for GRM when I send the updated file. You can manually obtain and install the latest working file here: <a href="https://github.com/TheGeneticsGuy/Guild_Roster_Manager_AddonSkinsFile" target="_blank" class="text-blue-600 hover:underline">GitHub: GRM AddOnSkins File</a>.</p>
                         <p class="mb-2">Download the <code>Guild_Roster_Manager.lua</code> file and copy it to:</p>
                         <code class="block bg-gray-200 text-gray-800 p-2 rounded mb-4 text-xs">\Interface\AddOns\AddOnSkins\Skins\AddOns\</code>
-                        <p class="mb-2">If AddOnSkins has blacklisted GRM due to errors, run this script and then re-enable GRM:</p>
+                        <p class="mb-2">It is possible if the GRM version is extremely outdated it has been internally blacklisted by AddOnSkins due to errors. If this is the case, install the new file, and then run this script and then re-enable GRM. it will reload your UI:</p>
                         <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-sm overflow-x-auto">
                             /run AddOnSkinsDS={};ReloadUI()
                         </div>
-                    </div>
-                </div>
-
-                <!-- CATEGORY: DATA -->
-                <div class="pb-2 border-b border-gray-200 mb-6 mt-10">
-                    <h2 class="text-sm font-bold text-blue-700 uppercase tracking-wider">Data & Backups</h2>
-                </div>
-
-                <!-- Q3 -->
-                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
-                        <span class="font-bold text-gray-900">How do I find Join Dates from before I installed GRM?</span>
-                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
-                        <p class="mb-4">The server does not provide this information directly, but there are a few workarounds:</p>
-
-                        <h4 class="font-bold text-gray-800 mb-2">1. Check WoWProgress</h4>
-                        <p class="mb-4 text-sm">If your guild is tracked on <a href="https://www.wowprogress.com" target="_blank" class="text-blue-600 hover:underline">wowprogress.com</a>, you can often find rough join dates there.</p>
-
-                        <h4 class="font-bold text-gray-800 mb-2">2. Use the In-Game Command (Retail Only)</h4>
-                        <p class="mb-2 text-sm">If players joined after the 2018 (BFA 8.0) Communities update, the server has their join date logged. Players can run this macro themselves and report the date to you:</p>
-                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-xs overflow-x-auto mb-4">
-                            /run local t=date("*t",math.floor((tonumber(string.format("%.0f",C_Club.GetClubInfo(C_Club.GetGuildClubId()).joinTime))/1000000)+0.5));print("Date Joined: "..t.year.."-"..t.month.."-"..t.day);
-                        </div>
-
-                        <h4 class="font-bold text-gray-800 mb-2">3. Mass Set Join Date (Last Resort)</h4>
-                        <p class="mb-2 text-sm">If you simply want to fill the blanks with a placeholder date (e.g., Aug 25, 2023) for everyone missing a date:</p>
-                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-xs overflow-x-auto">
-                            /run GRM_API.SetAllUnknownJoinDates(25,8,2023)
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Q4 -->
-                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
-                        <span class="font-bold text-gray-900">How do I create a real backup of my GRM data?</span>
-                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
-                        <p class="mb-2">Your data is stored in your WoW Directory here:</p>
-                        <code class="block bg-gray-200 text-gray-800 p-2 rounded mb-4 text-xs">_retail_\WTF\Account\YOUR_ACCOUNT\SavedVariables\Guild_Roster_Manager.lua</code>
-                        <ul class="list-disc list-inside space-y-2 text-sm">
-                            <li><strong>To Backup:</strong> Log out of the game, copy that `.lua` file, and paste it somewhere safe.</li>
-                            <li><strong>To Restore:</strong> Log out, delete the current file in that folder, and paste your backup copy in its place.</li>
-                        </ul>
                     </div>
                 </div>
 
@@ -221,6 +174,53 @@
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
                         <p>No. GRM relies on the modern Retail and Classic APIs. It will not function on private servers running older, modified API builds.</p>
+                    </div>
+                </div>
+
+                <!-- CATEGORY: DATA -->
+                <div class="pb-2 border-b border-gray-200 mb-6 mt-10">
+                    <h2 class="text-sm font-bold text-blue-700 uppercase tracking-wider">Data & Backups</h2>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">How do I find Join Dates from before I installed GRM?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-4">The server does not provide this information directly, but there are a few workarounds:</p>
+
+                        <h4 class="font-bold text-gray-800 mb-2">1. Check WoWProgress</h4>
+                        <p class="mb-4 text-sm">If your guild is tracked on <a href="https://www.wowprogress.com" target="_blank" class="text-blue-600 hover:underline">wowprogress.com</a>, you can often find rough join dates there.</p>
+
+                        <h4 class="font-bold text-gray-800 mb-2">2. Use the In-Game Command (Yes, this now works in Classic builds)</h4>
+                        <p class="mb-2 text-sm">In Retail, if players joined after the 2018 (BFA 8.0) Communities update, the server has their join date logged. This logging was not created server-side until then, so if you are in a guild prior to the 8.0 Patch, then the date will not be accurate. Players can run this macro themselves and report the date to you:</p>
+                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-xs overflow-x-auto mb-4">
+                            /run local t=date("*t",math.floor((tonumber(string.format("%.0f",C_Club.GetClubInfo(C_Club.GetGuildClubId()).joinTime))/1000000)+0.5));print("Date Joined: "..t.year.."-"..t.month.."-"..t.day);
+                        </div>
+
+                        <h4 class="font-bold text-gray-800 mb-2">3. Mass Set Join Date (Last Resort)</h4>
+                        <p class="mb-2 text-sm">If you simply want to fill the blanks with a placeholder date (e.g., Aug 25, 2023) for everyone missing a date:</p>
+                        <div class="bg-gray-800 text-gray-200 p-3 rounded font-mono text-xs overflow-x-auto">
+                            /run GRM_API.SetAllUnknownJoinDates(25,8,2023)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                        <span class="font-bold text-gray-900">How do I create a real backup of my GRM data?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2 bg-gray-50 border-t border-gray-100">
+                        <p class="mb-2">Your data is stored in your WoW Directory here:</p>
+                        <code class="block bg-gray-200 text-gray-800 p-2 rounded mb-4 text-xs">_retail_\WTF\Account\YOUR_ACCOUNT\SavedVariables\Guild_Roster_Manager.lua</code>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>To Backup:</strong> Log out of the game, copy that `.lua` file, and paste it somewhere safe.</li>
+                            <li><strong>To Restore:</strong> Log out, delete the current file in that folder, and paste your backup copy in its place.</li>
+                        </ul>
                     </div>
                 </div>
 

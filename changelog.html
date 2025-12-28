@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - Guild Roster Manager</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/site.css">
+
+    <!-- 1. Load Marked library (Parses Markdown) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="scripts/ui.js" defer></script>
+</head>
+<body class="bg-wow-lightBg text-gray-600 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img class="h-12 w-12 rounded-full border border-wow-darkGold group-hover:border-blue-600 transition-colors" src="assets/logo.webp" alt="GRM Logo">
+                    <span class="font-serif font-bold text-xl text-gray-900 tracking-wide group-hover:text-blue-800 transition-colors">Guild Roster Manager</span>
+                </a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="index.html#features" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="index.html#modules" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">Modules</a>
+                        <a href="faq.html" class="text-gray-600 hover:text-blue-700 hover:bg-gray-50 transition-all px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
+
+                        <!-- Active Changelog Link -->
+                        <a href="#" class="bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-sm font-bold" aria-current="page">Changelog</a>
+
+                        <a href="https://extract.guildrostermanager.com" class="ml-4 bg-blue-900 hover:bg-blue-800 text-blue-100 border border-blue-700 px-4 py-2 rounded-md text-sm font-bold transition-all shadow-lg hover:shadow-blue-900/50">
+                            Log Extractor tool
+                        </a>
+                    </div>
+                </div>
+                 <!-- Mobile Button -->
+                 <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b border-gray-200" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Features</a>
+                <a href="index.html#modules" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Modules</a>
+                <a href="faq.html" class="text-gray-600 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="#" class="bg-blue-50 text-blue-700 block px-3 py-2 rounded-md text-base font-bold">Changelog</a>
+                <a href="https://extract.guildrostermanager.com" class="text-blue-700 font-bold block px-3 py-2 rounded-md text-base">Log Extractor Tool</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-serif font-bold text-gray-900 mb-8 border-b border-gray-200 pb-4">Changelog</h1>
+
+            <!--
+               This div is where the markdown appears.
+               The 'prose' class comes from the Typography plugin we installed.
+               It magically styles H1, H2, Lists, Code blocks, etc.
+            -->
+            <div id="changelog-content" class="prose prose-blue prose-lg max-w-none text-gray-600">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="flex-1 space-y-4 py-1">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="space-y-2">
+                            <div class="h-4 bg-gray-200 rounded"></div>
+                            <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-serif font-bold text-xl text-white">GRM</span>
+                <p class="text-xs text-white mt-2">
+                    &copy; <span id="copyright-year">2026</span> Guild Roster Manager.<br>
+                    Not affiliated with Blizzard Entertainment. This is an independent project.
+                </p>
+
+                <p class="pt-2 border-t border-white text-red-600">
+                    Logo by <a href="https://www.darkwolves.eu" target="_blank" rel="noopener" class="text-white hover:text-indigo-400 transition-colors hover:underline">Poisonenvy of the Dark Wolves guild (EU)</a>
+                </p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://discord.gg/wA7bPUfZuK" class="text-white hover:text-indigo-400 transition-colors flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037 13.045 13.045 0 0 0-1.093 2.222 18.368 18.368 0 0 0-5.32 0 13.045 13.045 0 0 0-1.093-2.222.074.074 0 0 0-.079-.037 19.791 19.791 0 0 0-4.885 1.515.071.071 0 0 0-.037.054c-.584 8.766 3.322 15.753 8.356 19.863a.072.072 0 0 0 .08 0 6.645 6.645 0 0 0 2.21-2.903.076.076 0 0 0-.028-.08 10.708 10.708 0 0 1-3.664-1.758.077.077 0 0 1 .003-.128 7.376 7.376 0 0 0 1.944-.94.075.075 0 0 1 .135.03c-.275.14-.548.273-.815.405a10.938 10.938 0 0 1 2.404-.736.077.077 0 0 1 .084.053 6.645 6.645 0 0 0 2.21 2.903.072.072 0 0 0 .08 0c5.06-4.133 8.94-11.097 8.356-19.863a.071.071 0 0 0-.037-.054zM8.02 15.33c-1.18 0-2.157-1.086-2.157-2.42 0-1.332.955-2.419 2.157-2.419 1.21 0 2.175 1.095 2.157 2.42 0 1.333-.955 2.42-2.157 2.42zm7.975 0c-1.182 0-2.156-1.086-2.156-2.42 0-1.332.955-2.419 2.156-2.419 1.21 0 2.176 1.095 2.156 2.42 0 1.333-.956 2.42-2.156 2.42z"/></svg>
+                    <span>Discord</span>
+                </a>
+                <a href="https://github.com/TheGeneticsGuy/Guild-Roster-Manager" class="text-white hover:text-white transition-colors flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIC TO FETCH MD FILE -->
+    <script>
+        fetch('changelog.md')
+            .then(response => {
+                if (!response.ok) throw new Error("Changelog file not found");
+                return response.text();
+            })
+            .then(text => {
+                const contentDiv = document.getElementById('changelog-content');
+                // Parse markdown using Marked.js
+                contentDiv.innerHTML = marked.parse(text);
+            })
+            .catch(err => {
+                document.getElementById('changelog-content').innerHTML = `
+                    <p class="text-red-500 font-bold">Error loading changelog.</p>
+                `;
+            });
+    </script>
+</body>
+</html>

@@ -16,6 +16,10 @@ FROM nginx:alpine
 
 COPY index.html /usr/share/nginx/html/index.html
 COPY faq.html /usr/share/nginx/html/faq.html
+COPY changelog.html /usr/share/nginx/html/changelog.html
+
+COPY changelog.md /usr/share/nginx/html/changelog.md
+
 COPY assets /usr/share/nginx/html/assets
 COPY scripts /usr/share/nginx/html/scripts
 COPY --from=builder /app/styles/site.css /usr/share/nginx/html/styles/site.css
