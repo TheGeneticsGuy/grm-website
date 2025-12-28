@@ -4,7 +4,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 RUN npm init -y && \
-    npm install -D tailwindcss@3.4.1
+    npm install -D tailwindcss@3.4.1 @tailwindcss/typography
 
 COPY . .
 
