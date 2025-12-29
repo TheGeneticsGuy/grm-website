@@ -38,7 +38,7 @@ As you can see, it can handle massive GRM save files. This guild had over 100,00
 
 ![Parsed Successfully](assets/changelog_images/extract_tool2.webp)
 
-[Click Here to Try it Yourself](https://grm-parser-webapp.onrender.com/)
+[Click Here to Try it Yourself](https://extract.guildrostermanager.com/)
 
 ***QOL***
 
