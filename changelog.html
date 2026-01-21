@@ -136,7 +136,7 @@
 
     <!-- LOGIC TO FETCH MD FILE -->
     <script>
-        fetch('changelog.md')
+        fetch('changelog.md?v=' + new Date().getTime())
             .then(response => {
                 if (!response.ok) throw new Error("Changelog file not found");
                 return response.text();
