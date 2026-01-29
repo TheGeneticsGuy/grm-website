@@ -1,3 +1,7 @@
+## **VERSION 1.99375 - January 29th, 2026**
+
+*Stealth update - Re-enabling faction icons.*
+
 ## **VERSION 1.99374 - January 29th, 2026**
 
 ***QOL***
