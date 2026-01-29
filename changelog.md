@@ -1,10 +1,34 @@
-## **VERSION 1.99372 - January 20th, 2025**
+## **VERSION 1.99374 - January 29th, 2026**
+
+***QOL***
+
+* Minimap button is now more configurable. In the General settings you can choose to keep it as a standard minimap icon, which uses the widely used library "LibDBIcon," or selecting the "Move anywhere" option where you use GRM's custom minimap icon you can drag and drop anywhere. The choice will only appear if you have an addon with this library installed. GRM does not natively support it standalone, but if it detects the library exists in the global space, then GRM will take advantage of it so addons like Titan Panel can detect GRM minimap icon, among others. However, some people maybe don't want to be forced to use the standard behavior icon, so now in GRM you have a choice. Use GRM's custom, or use the standard library one. It's as simple as choosing. You can swap back and forth without issue. GRM window > Options > General Tab. -- Please note, you may want
+
+***BUG FIXES***
+
+* 12.0 Midnight changes means some API restrictions that have caused a lot of error spam when in raid boss combat or in BGs. GRM has cleaned up the new API conflicts. Please be aware that Blizz has made some addon restrictions that CANNOT be circumvented. Notably, chat text manipulation where GRM hooks the text and adds the player main name (or pending nickname feature). This is 100% restricted by Blizzard, but only when in raid boss combat or in BGs. GRM attempts to handle this intelligently, however, in that if it detects the new restricted state, it queues up scan to analyze the state post Raid boss, or when exiting a PVP instance (BG or arena). So, in theory, this shouldn't really matter a whole lot as when you are busy PVPing or in a raid bosss fight, I doubt people will be that concerned if the main name is getting added to the chat names. So, just to clarify, this intelligently handles the new Addongeddon issues so it is not an issue for GRM, and GRM has adapted to the new state GRM has placed addons into in regards to combat restricted limitations in the background.
+
+* An issue with the Classic Hardcore where the noltification about joining the Hardcore channel was appearing even if you had already joined the channel.
+
+* Fixed an issue where at some point in a session the player and guild changes would just stop updating. This is because the GRM scan got "stuck" in a state where it wasn't processing another scan as it thought it was already in a scan. I found the source of the flaw and fixed it, but I also added a rather robust, though lightweight "heartbeat" check to ensure that the scanning is bundled up and reset and completed after it is triggered in case it ever gets stuck, so the anomaly will go away.
+
+* I believe I finally resolved the weird kind of latent bug where the GRM window would just refresh and appear for some people when zoning or on flightpaths. This is due to it being stuck in a windows hidden state from combat where it never exited it until later. This should now be resolved. Please let me know otherwise.
+
+* Massive cleanup on the backend of the global space as I had not done a true cleanup of unused variables or accidental writes to the global space.
+
+* Fixed a bug where the default position of the custom minimap icon was too small due to the minimap size change in 10.0. This will reset on it's own if you Ctrl-click to move and drag it.
+
+* Fixed an issue where the guild faction wasn't showing in the roster anymore due to the Blizz API changes. A workaround inferring faction by race has been implemented.
+
+* Fixed an old bug from updating a very old version of the addon where you'd get spammed in the chat as it updated your macro rules. This will no longer do that. This only applies to people that haven't updated in about the last 100 releases lol.
+
+## **VERSION 1.99372 - January 20th, 2026**
 
 **BUG FIXES**
 
 * Error causing some people to not be able to update GRM properly. It was failing on patching. This is now resolved.
 
-## **VERSION 1.99371 - January 20th, 2025**
+## **VERSION 1.99371 - January 20th, 2026**
 
 *Compatibility release with Midnight*
 
@@ -24,15 +48,13 @@
 
 I wrote my own custom software to parse out all the realm names from all regions, from all builds, wchi is quite a lot. It then exports this data into a Lua formatted file that GRM uses to import the data easily. You can [See the software here](https://github.com/TheGeneticsGuy/WarcraftRealms)
 
-## **VERSION 1.9937 - January 14th, 2025**
+## **VERSION 1.9937 - January 14th, 2026**
 
 *Compatibility update with TBC Anniversary Release*
 
 ***BUG FIXES***
 
 * On new anniversary expansion releases, in some cases Blizz tweaks the GUIDs of the player. This has bad consequences for GRM. I wrote a way to detect and avoid losing your guild player data as a result. If it has already happened to you, if you have a backup GRM savedVaraibles file just restore it and load the game again.
-
-![GRM Official Site](assets/changelog_images/log_edit_updated.webp)
 
 ***QUALITY OF LIFE***
 
