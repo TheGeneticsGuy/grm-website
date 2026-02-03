@@ -1,3 +1,12 @@
+## **VERSION 1.99377 - February 3rd, 2026
+***BUG FIXES**
+
+* Fixed an issue where scan can fail AFTER some leaves the guild. It's kind of a weird relation related to live checking the data as people leave so that GRM doesn't misreport whilst in. But, it ended up flagging a gate that would not reopen and allow scanning behind the scenes. This is now fully resolved. I tried very hard to break it, and it is working consistently.
+
+* Fixed an issue where the addon was failing to patch a previous bug and then fail to initialize. While this could happen in WOW version, this particularly was sourced directly to an issue that affected Classic Era and Anniversary the most.
+
+* Fixed an issue where the link to the custom website I built so you can extract your log to an Excel or Text file wasn't loading in-game. This should now properly show.
+
 ## **VERSION 1.99376 - January 30th, 2026**
 
 ***BUG FIXES***
