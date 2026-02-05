@@ -1,3 +1,15 @@
+## **VERSION 1.99378 - February 5th, 2026**
+
+***BUG FIXES**
+
+* Fixed an issue where some data was not being purged when doing a full GRM reset with `/grm hardreset` (DO NOT USE UNLESS YOU WANT ALL ADDON DATA WIPED ACCOUNT WIDE - WARNING!!!)
+
+* Fixed an issue where GRM was not patching. Kind of an edge case for some players on Classic Anniversary.
+
+* Fixed a minor reporting wrong issue where it would say you changed guild ranks from "{custom1} to newRankName" - It was saying this cause if you transferred your guild and imported the data, but then you had added ranks, you were adding a rank and giving a new name, but it was saying it was a new rank change name, when it just didn't exist prior.
+
+* Fixed an issue where the player Mythic + rating was not showing on the mouseover window of the player in Retail. This should work fine now.
+
 ## **VERSION 1.99377 - February 3rd, 2026
 ***BUG FIXES**
 
