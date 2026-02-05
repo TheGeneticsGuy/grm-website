@@ -1,6 +1,6 @@
 ## **VERSION 1.99378 - February 5th, 2026**
 
-***BUG FIXES**
+***BUG FIXES***
 
 * Fixed an issue where some data was not being purged when doing a full GRM reset with `/grm hardreset` (DO NOT USE UNLESS YOU WANT ALL ADDON DATA WIPED ACCOUNT WIDE - WARNING!!!)
 
@@ -10,8 +10,8 @@
 
 * Fixed an issue where the player Mythic + rating was not showing on the mouseover window of the player in Retail. This should work fine now.
 
-## **VERSION 1.99377 - February 3rd, 2026
-***BUG FIXES**
+## **VERSION 1.99377 - February 3rd, 2026**
+***BUG FIXES***
 
 * Fixed an issue where scan can fail AFTER some leaves the guild. It's kind of a weird relation related to live checking the data as people leave so that GRM doesn't misreport whilst in. But, it ended up flagging a gate that would not reopen and allow scanning behind the scenes. This is now fully resolved. I tried very hard to break it, and it is working consistently.
 
