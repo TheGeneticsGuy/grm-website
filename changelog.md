@@ -1,3 +1,27 @@
+## **VERSION 1.99381 - February 27th, 2026**
+
+***QUALITY OF LIFE***
+
+* GRM is now compatible with custom Chattynator channels. The integration was fairly extensive, but this is a really nice addon to work with so I was happy to integrate it properly. For fun, you can see some of the code integration effort [here on GitHub](https://github.com/TheGeneticsGuy/Guild-Roster-Manager/blob/Retail/Compatibility/grm_chattynator.lua). The integration is seemless and indifferent from Blizz default frames so there should be no noticeable differences or configurations you need to make. It will "just work." I don't like adding complexity or unnecessary configurations, so I really went out of my way to ensure it is all handled automatically behind the scenes. At the end of the day, GRM is just a small player in the world of addon development and I think it is more important for me to be considerate of being compatible with others than the other way around, so I really do put in effort to not have addon compatibility issues, or to add some functionality for popular addons. But please, let me know if any issues to you Chattynator users.
+
+* The Addon Compartment little dropdown just above the minimap now includes GRM as a fully registered addon. Clicking it has the same function as clicking the minimap button.
+
+* The macro tool you can now enter 3 digits instead of 2, for months. The game has been out a really long time now, 20 years, so previous limit was inactivity could be > 99 months. That's just over 8 years. Well, some guilds now won't purge until people are 10+ years inactive so GRM can now add higher limits for these checks. Yes, this doesn't apply to most of you, but for some, it matters.
+
+***BUG FIXES***
+
+* Prat addon compatibility updated - GRM should no longer give double main name tags in chat.
+
+* Fixed a bug where GRM was triggering an addongeddon "Secret Value" lua error that will happen in raid boss fights, and some other instances, when querying guild data from the server.
+
+* Fixed an issue wither GRM erroneously saying the addon was restricted on loading, even when out of combat or even in a rested zone. This has been resolved and should no longer happen at the wrong time. This was a protection to inform you why GRM might not be initializing if you /reload in say, a PVP instance, or in a raid boss fight, because you cannot initialize GRM as much of the Warcraft API is restricted when querying guild member data. There was a case where a few seconds after logging in, the API was giving "secret" values but would self-resolve. GRM detected them and then was waiting for a resolution that never came, so it would self resolve if you say zones, or entered and exited combat, but if you were sitting in a city you could end up indefinitely GRM not configuring. This shouldn't happen anymore.
+
+* Fixed an issue where you were getting spammed in combat or BGs again when GRM would query guild roster changes. This should no longer happen. This was part of the addongeddon changes.
+
+* Fixed a bug where a Lua error could pop shortly after joining a guild if someone goes online or offline and GRM is still not fully configured.
+
+* Fixed a bug that could cause the entire roster to declare they had all left the guild. Seems to be related to the roster API sometimes returning no information shortly after login. This might not be fully fixed as I was unable to recreate it on my end, but the solution was a fairly robust check on the DB pulled from the server before comparing to the existing GRM DB for changes. This is fairly new and only 1 person has reported this issue, so hopefully it resolves it. Please let me know if you encounter any issues where your guild is spammed with everyone leaving the guild and then rejoining immediately after. Hopefully this is resolved though and I get no reports!
+
 ## **VERSION 1.99380 - February 10th, 2026**
 
 *Compatibility Build with 12.0.1 Midnight*
