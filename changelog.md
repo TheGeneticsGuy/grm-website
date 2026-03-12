@@ -1,3 +1,40 @@
+## **VERSION 1.99383 - March 12th, 2026**
+
+***ADDONGEDDON WITH MIDNIGHT***
+
+Unfortunately, Blizzard has gone a little scorched Earth and restricted many API by either removing them completely from the game, or protecting them. For example, Blizzard has removed the ability of addons to edit Public or Officer notes, or the Guild Info. While it clearly would have made more sense if they upheld the spirit of their intent, to restrict addon advantage in raiding or in PVP, and only restricted it in combat or in PVP instances, they have instead just completely eliminated the API code functionality from the game and you cannot access them anymore with addons. There are many other areas of annoyance as well. These cannot be circumvented. 
+
+While they have not hit Classic as of yet, it is quite possible that these restrictions will eventually trickle down to classic. I cannot guarantee it, but since the backends are unified in their API for 99.99% of stuff, the elimination of this officer and public note API and the replacement with a now unusable, "protected" API, implies Blizz fully intends to restrict addon usage in Classic too.
+
+We'll see the next classic/anniversary patch if they decided to trickle down these changes, like they have seemingly always done. 
+
+In the meantime, here is how these direct changes affect GRM:
+
+* Mouseover you can no longer edit your public/officer notes, only view them easily.
+
+* Auto-adding the join date to a note can now only be added to the GRM Custom Note. Adding to the Officer or Public note can not longer be done as per the Blizz addon restrictions. As a reminder, adding the join date to notes only appends the date, if there is sufficient room. Again, it will not overwrite your note, only append to it.  As a reminder, the Custom GRM note is actually much like a Public Note. It will be freely, outgoing, and shared to all GRM users, including the lowest rank members, just like the alt data, the main, and so on. HOWEVER, who can make edits to the custom GRM note is 100% up to the guild sync restrictions. If you do not wish to allow synced information to be edited by all, just only read, then be sure to configure, in the `/grm > Options > Sync tab`, which ranks have permission to edit. And yes, I AM considering creating a new Officer only custom note.     
+
+* Macro Tool Demote rule can no longer add an automatic custom note to public or officer note, after demoting. It can only be added to the GRM Custom Note of the player.
+
+* The !note feature to let players set their own public notes is no longer accessible in Retail and is disabled. This was largely redundant in Retail anyway as Communities interface improved the public note editing to only officers and yourself, unlike in Classic where you can edit all fellow guild members notes.
+
+* The Advanced Join Date audit tool is significantly less useful now and needs to be adapted to these changes. I have not yet modified this tool appropriately for the retail changes. So importing dates will still work, but exporting to anywhere but Custom is now the only thing possible. The text has not been made clear in retail. I am debating what to do as this is still fully functionaly in classic builds.
+
+***QUALITY OF LIFE***
+
+* The Macro Rules now have an option to apply a rule to "Max Level only." You technically can still just set it 90-90, but now there is an option to where it always applies max level.
+
+***BUG FIXES***
+
+* Various bugs related to the massive underlying changes of Midnight's launch. I will not post all of them.
+
+* Fixed a bug where GRM would not configure and load properly due to failing to properly apply a patch. This is now resolved.
+
+* Fixed an issue where GRM was not correctly matching "max level" players for promote and demote macros.
+
+* Fixed an issue where the Midnight addon restriction "secret value" was erroneously marking some conditions as protected times when they actually weren't. The API usage should be much tigher and exact now around the use of these values and/or functions.
+
+
 ## **VERSION 1.99382 - February 28th, 2026**
 
 ***BUG FIXES***
