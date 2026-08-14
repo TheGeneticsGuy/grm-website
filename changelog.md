@@ -7,7 +7,7 @@
 * Classic Era (SoD, HC, and Vanilla) - 1.15.9
 
 * TBC Anniversary - 2.5.6
-W
+
 ***NEW FEATURE***
 
 **Global Control for Classic Builds to Enable/Disable the profession skills added to notes**
