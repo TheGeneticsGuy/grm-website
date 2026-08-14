@@ -1,3 +1,45 @@
+## **VERSION 1.9942 - August 13th, 2026**
+
+*Compatibility update for 3 Versions*
+
+* Retail - 12.1.0
+
+* Classic Era (SoD, HC, and Vanilla) - 1.15.9
+
+* TBC Anniversary - 2.5.6
+W
+***NEW FEATURE***
+
+**Global Control for Classic Builds to Enable/Disable the profession skills added to notes**
+
+In the Global Control string, for those that use it, it is found inside the Guild Information, at the bottom, and looks something like `"GRM^1;3;3;3;3;+;XX;XX;2^g` - Or something like that. I had kept an empty value for future expansion, and I finally am using it, so no need to multi-parse different text structures. The new index, the final one will represent the ability to control these settings globally in your guild. Of course, these particular settings are strictly relegated to only officers. Here is the breakdown of what the final index represents:
+
+* 0 = Fully Disabled - Officers cannot even manually click the button to do a 1-time update.
+* 1 = Profession Skills - Public Note - Auto Update Enabled
+* 2 = Profession Skills - Officer Note - Auto Update Enabled
+* 3 = Profession Skills - Custom Note - Auto Update Enabled
+* 4 = Feature is Enabled, but it will not auto update. It allows any officer to manually update
+*All other values erroneously in this slot will default to 0 and disable the feature*
+
+As with all Global controls, once the control string has been added to the Guild Info, it is fully restricted and no officers can adjust the settings, only the Guild Leader. If the Guild Leader has delegated this work to an officer, all you need to do is just remove the global control string from the guild info and re-add the updated string manually. Of note, in Retail, the guild info has been 100% restricted from being able to be edited by any addons, so while any of the Classic builds will auto-update this text string when editing, in retail, you will instead get a popup box indicating a change in a Global Control setting, with the text string for you to copy and paste into the guild information window. Please let me know if you encounter any bugs. I think I covered everything, but there's always something!
+
+![Classic Professions Global Controls](assets/changelog_images/Classic_Professions.webp)
+
+***BUG FIXES***
+
+* Log search improvement. This is both a bug fix and an enhancement. For some people with very large logs, the GRM log could end up hanging and timing out if you "searched" for a name. This is because GRM tries to be smart in that it searches the log for direct matches, but also normalizes text so if someone has a name with alt code characters, you could still just search with a normalized English spelling. Example, if you wanted to find the name `Dârknëss` then you could just search Darkness, and GRM would still find this name. The problem is I built that code when I was pretty amateurish in my coding skills and I sort of brute-forced this capability. After hearing about some people's log timing out and not functioning properly, I decided to go back and revamp this. It now is much much faster, and shouldn't really cause that stuttering or get hung up as you search now. I have tested this even with a log of 80,000+ log entries just to kind of stress test it and it worked great.
+
+* Major bug fix where Left or kicked player were not consistently being reported in the log. What was happening was because of my pseudo async methodology in how I scan through the roster now to prevent any kind of lag or stuttering, particularly with really big guilds, but it can affect any reasonably sized guild. My heartbeat check on Scan, which is a behind the scenes sort of thread that double checks that the loop didn't hang somewhere for some reason, and does a hard kill of it. It kills if it takes longer than 10 seconds. Well,  on a general scan after logging in, in bigger guilds, your looping through the roster in chunks, you then get to the "Recommendations" where if you have a lot of macro rules set, it also scans through the roster in chunks for "recommendations" on rule matches for promotions or kicks, etc... This kind of process is a little resource hungry the more complex or number of macro rules you have, so I async roll through in chunks as efficiently as possible. Well, I was not keeping the heartbeat alive during these async checks, so each time it looped through a chunk, the 10 second counter should restart back to zero as it is evidence the scan is still processing. Well, in some scenarios, especially with a lot of macro rules, you can get to like 10.1 seconds when logging in, on how long it takes to process everything. Oops, heartbeat check kills the process and any unreported messages get stored for next scan, and the scan is killed.
+
+Here's the thing, when I cached the messages for reporting on the next scan, I cached them all except the players leaving or getting kicked lol. Also, looking at my code, I seemed to have added an argument to a function where I pass it "true" to ensure the left players get reported to the log, but it never got used. It was a completely unused variable in my code, so looking at it, it is clear I was self-aware of this when I originally wrote it, but then probably never finished.
+
+* Fixed a bug where if in the middle of GRM being configured at loading in, it could happen where GRM hooks the guild change event message but if GRM was not yet fully configured, if something happened in the guild triggering it, it would try to scan for roster changes, except the addon was not fully loaded, triggering a lua error. This would self resolve once the addon configured, but the potential of this error triggering shortly after logging in will no longer happen.
+
+* Fixed a bug where the player name when logging off, if you had the Main tags disabled, if they were their own main, the system message might say something like "Arkaan (Arkaan) has gone offline." This double name issue will no longer occur.
+
+* Fixed a bit of an edge case where GRM could spam you over and over the guild information if you reloaded in a mythic dungeon or rated PVP or some other restricted state. This was mostly resolved before but now it covers all the bases.
+
+
 ## **VERSION 1.9941 - June 18th, 2026**
 
 ***BUG FIXES***
