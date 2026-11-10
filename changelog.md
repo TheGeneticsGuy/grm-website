@@ -1,3 +1,40 @@
+## **VERSION 1.9952 - November 10th, 2026**
+
+*Please note, the WOW Forever API seems to have gimped the Profession data API call. Right now it is only returning all members of the guild with professions as Rank1 skill level, which is wrong. The API query to the server is just not pulling your the profession info fully anymore. I am hoping that this is a mistake by Blizzard and not intentional as this data has been accessible for YEARS by Blizz and would seem odd to limit access to it just in WOW Forever.*
+
+If you can, please, in WOW Forever, submit a bug report (Esc > Support > Submit Feedback or Bug report) that the following API is not pulling data correctly:
+
+`C_Club.GetMemberInfo(memberID, clubID)`
+* Profession1Rank and Profession2Rank are only returning rank skill of 1, regardless of the true rank.
+
+Thank you!
+
+***BUG FIXES***
+
+* Fixed some major chat pollution. If you are seeing this in chat []GRM[] (notably in whispers) it is because I had been using some hidden injection tags when I was working on and testing my nickname insertion system and I accidentally left some of this in on release. Sorry about that. Super annoying. The chat will no longer do this. GRM naming should be properly working and fully compatible, universally, with most chat addons for adding GRM nicknames/main/alt tagging. Chattynator I even wrote a custom compatibility translotr since they have their own fully custom frames. Most UI addons just hook the existing Blizz frames and slightly modify, so GRM will work without issue.
+
+* Fixed a bug where the ignore list was getting wiped for promotions/demotions. In other words, you wanted to bypass promotions for certain players, so you add them. They were auto getting removed from ignore list and it was never being saved. This should work correctly now. Sorry about that. Kind of annoying bug.
+
+* Fixed an issue with the ban list where it would spam you saying you didn't have something localized also when you tried to add a new ban.
+
+* Fixed the ban list so you can add bans in WOW Forever, Edit them, and Delete them. This was completely broken. It has been revamped and fully adapted to the new First Name/Last Name convention instead of "server." Please be aware, WOW Forever still has the same limitations on banning players who have never been in your guild. You cannot pull server data on players NOT in your guild unless you are grouped with them, or currently targeting them, which GRM accounts for. If they are a former member, you are fine. But if you add a ban for someone you didn't like because they were say, rude in your raid, but you add the ban AFTER they had already left, there is no API call to query their data from the server by name alone. GRM will inform you of this in-game. This message is only a reminder of this limitation of banning players. So, current member not yet kicked from the guild? Good. Former meber? Good. Currently grouped with them or targeting them? Good. Other than that, ban will be meaningless.
+
+* German file had missing localization file added
+
+## **VERSION 1.9951 - November 8th, 2026**
+
+***BUG FIXES***
+
+* Fixed Chat addon compatibility. Kind of overlooked this when I implemented the new nickname system that overwrites the names. Chattynator and Prat, you guys are back in action! Things like ElvUI and others should have universal compatibility. Chattynator I had to build custom hooks to work with because it is a total rewrite from the ground up of its own custom chat frame. Very cool, but complicated lol. It is such a nice addon I feel I had no choice but to make GRM Compatible.
+
+* Lua error resolved that will spam you in all Classic builds that was an oversight from the WOW Forever/Retail adjustment. The !note feature will also work again.
+
+* Fixed a bug where attempts to process nicknames or main/alt configurations to chat were throwing secret protection errors.
+
+* Anyone not English/Korean build users were getting spammed with missing localization files. Sorry about that guys, forgot to include them for non-English users.
+
+* Fixed a bug resolving the fact that if you are in a special consideration time, where secret variables are in play, like in Raid combat, it was not double checking that. It will now no longer throw that error. Please be aware that addons are unable to modify the chat to inject nicknames or even main/alt tags when in these situations.
+
 ## **VERSION 1.995 - November 5th, 2026**
 
 ***WOW FOREVER COMPATIBILITY LAUNCH***
