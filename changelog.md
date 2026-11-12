@@ -11,7 +11,7 @@ If you can, please, in WOW Forever, submit a bug report (Esc > Support > Submit 
 `C_Club.GetMemberInfo(memberID, clubID)`
 * Profession1Rank and Profession2Rank are only returning rank skill of 1, regardless of the true rank.
 
-Thank you!
+Thank you! 
 
 ***BUG FIXES***
 
